@@ -1,0 +1,11 @@
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp2.2\Snake.deps.json
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp2.2\Snake.runtimeconfig.json
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp2.2\Snake.runtimeconfig.dev.json
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp2.2\Snake.dll
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp2.2\Snake.pdb
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp2.2\Snake.csprojAssemblyReference.cache
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp2.2\Snake.csproj.CoreCompileInputs.cache
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp2.2\Snake.AssemblyInfoInputs.cache
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp2.2\Snake.AssemblyInfo.cs
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp2.2\Snake.dll
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp2.2\Snake.pdb
