@@ -1,0 +1,22 @@
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp3.0\Snake.exe
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp3.0\Snake.deps.json
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp3.0\Snake.runtimeconfig.json
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp3.0\Snake.runtimeconfig.dev.json
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp3.0\Snake.dll
+D:\Movaghari\Source\Visual Studio\Snake\bin\Debug\netcoreapp3.0\Snake.pdb
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp3.0\Snake.csprojAssemblyReference.cache
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp3.0\Snake.AssemblyInfoInputs.cache
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp3.0\Snake.AssemblyInfo.cs
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp3.0\Snake.dll
+D:\Movaghari\Source\Visual Studio\Snake\obj\Debug\netcoreapp3.0\Snake.pdb
+D:\Movaghari\Source\C#\Snake\bin\Debug\netcoreapp3.0\Snake.exe
+D:\Movaghari\Source\C#\Snake\bin\Debug\netcoreapp3.0\Snake.deps.json
+D:\Movaghari\Source\C#\Snake\bin\Debug\netcoreapp3.0\Snake.runtimeconfig.json
+D:\Movaghari\Source\C#\Snake\bin\Debug\netcoreapp3.0\Snake.runtimeconfig.dev.json
+D:\Movaghari\Source\C#\Snake\bin\Debug\netcoreapp3.0\Snake.dll
+D:\Movaghari\Source\C#\Snake\bin\Debug\netcoreapp3.0\Snake.pdb
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.csprojAssemblyReference.cache
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.AssemblyInfoInputs.cache
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.AssemblyInfo.cs
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.dll
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.pdb
