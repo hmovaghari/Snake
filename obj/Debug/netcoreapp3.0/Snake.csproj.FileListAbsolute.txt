@@ -20,3 +20,5 @@ D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.AssemblyInfoInputs.ca
 D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.AssemblyInfo.cs
 D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.dll
 D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.pdb
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.csproj.CoreCompileInputs.cache
+D:\Movaghari\Source\C#\Snake\obj\Debug\netcoreapp3.0\Snake.genruntimeconfig.cache
