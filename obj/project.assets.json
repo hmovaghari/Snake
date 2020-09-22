@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Movaghari\\Source\\C#\\Snake\\Snake.csproj",
+      "projectUniqueName": "G:\\C#\\Snake\\Snake.csproj",
       "projectName": "Snake",
-      "projectPath": "D:\\Movaghari\\Source\\C#\\Snake\\Snake.csproj",
+      "projectPath": "G:\\C#\\Snake\\Snake.csproj",
       "packagesPath": "C:\\Users\\hmovaghari\\.nuget\\packages\\",
-      "outputPath": "D:\\Movaghari\\Source\\C#\\Snake\\obj\\",
+      "outputPath": "G:\\C#\\Snake\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -81,7 +81,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
