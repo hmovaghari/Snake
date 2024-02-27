@@ -67,6 +67,8 @@ namespace Snake
 
             /*Snake[0].X = 3;*//*Snake[0].X = 117;*/
             /*Snake[0].Y = 7;*//*Snake[0].Y = 27;*/
+
+            Console.Clear();
         }
 
         #endregion
