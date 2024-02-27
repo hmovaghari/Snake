@@ -603,27 +603,30 @@ namespace Snake
         /// </summary>
         static void ConsoleProperties()
         {
-            Console.WindowHeight = 30; // Change Window Height
-            Console.WindowWidth = 120; // Change Window Width
-            //Console.BufferHeight = 30; //9001//30// Change Buffer Height
-            Console.BufferWidth = 120; // Change Buffer Width
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.WindowHeight = 30; // Change Window Height
+                Console.WindowWidth = 120; // Change Window Width
+                //Console.BufferHeight = 30; //9001//30// Change Buffer Height
+                Console.BufferWidth = 120; // Change Buffer Width
+                Console.CursorSize = 25; // Change Cursor Size
+                /* Disable Resize Windows */
+                IntPtr handle = GetConsoleWindow();
+                IntPtr sysMenu = GetSystemMenu(handle, false);
+
+                if (handle != IntPtr.Zero)
+                {
+                    //DeleteMenu(sysMenu, SC_CLOSE, MF_BYCOMMAND); // Disable CLOSE Button
+                    //DeleteMenu(sysMenu, SC_MINIMIZE, MF_BYCOMMAND); // Disable MINIMIZE Button
+                    DeleteMenu(sysMenu, SC_MAXIMIZE, MF_BYCOMMAND); // Disable MAXIMIZE Button
+                    DeleteMenu(sysMenu, SC_SIZE, MF_BYCOMMAND); // Disable Resize Windows
+                }
+                /* Disable Resize Windows */
+            }
             Console.BackgroundColor = ConsoleColor.Black; // Change Background Color
             Console.ForegroundColor = ConsoleColor.Gray; // Change Foreground Color
             Console.Title = "Snake"; // Change Title
-            Console.CursorSize = 25; // Change Cursor Size
             Console.CursorVisible = false; // Cursor Visible
-            /* Disable Resize Windows */
-            IntPtr handle = GetConsoleWindow();
-            IntPtr sysMenu = GetSystemMenu(handle, false);
-
-            if (handle != IntPtr.Zero)
-            {
-                //DeleteMenu(sysMenu, SC_CLOSE, MF_BYCOMMAND); // Disable CLOSE Button
-                //DeleteMenu(sysMenu, SC_MINIMIZE, MF_BYCOMMAND); // Disable MINIMIZE Button
-                DeleteMenu(sysMenu, SC_MAXIMIZE, MF_BYCOMMAND); // Disable MAXIMIZE Button
-                DeleteMenu(sysMenu, SC_SIZE, MF_BYCOMMAND); // Disable Resize Windows
-            }
-            /* Disable Resize Windows */
         }
 
         #endregion
