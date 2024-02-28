@@ -452,7 +452,7 @@ namespace Snake
 
             var welcome = "Welcome to Snake!";
             SetTextCenter(welcome, yLocation: PlaygroundPoint1.Y - 4);
-            SetTextCenter(by, yLocation: PlaygroundPoint1.Y - 2);
+            SetTextCenter(by, yLocation: PlaygroundPoint1.Y - 3);
 
             for (int x = PlaygroundPoint1.X; x <= PlaygroundPoint2.X; x++)
             {
