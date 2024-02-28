@@ -608,8 +608,8 @@ namespace Snake
             {
                 Console.WindowHeight = PlaygroundPoint2.Y + 1; //30; // Change Window Height
                 Console.WindowWidth = PlaygroundPoint2.X + 1; //120; // Change Window Width
-                //Console.BufferHeight = 30; //9001//30// Change Buffer Height
-                Console.BufferWidth = 120; // Change Buffer Width
+                //Console.BufferHeight = Console.WindowHeight + 1; //30; //9001//30// Change Buffer Height
+                //Console.BufferWidth = Console.WindowWidth + 1; //120; // Change Buffer Width
                 Console.CursorSize = 25; // Change Cursor Size
 
                 /* Disable Resize Windows */
