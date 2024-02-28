@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace Snake
 {
@@ -23,9 +23,15 @@ namespace Snake
 
         #endregion
 
+        private static readonly Point2D PlaygroundPoint1 = new Point2D() { X = 2, Y = 6 };
+        private static readonly Point2D PlaygroundPoint2 = new Point2D() { X = 77, Y = 22 };
+        private static readonly int mean = (PlaygroundPoint1.X + PlaygroundPoint2.X) / 2;
+        private static readonly int maxLenSnake = (PlaygroundPoint2.X - PlaygroundPoint1.X - 1) * (PlaygroundPoint2.Y - PlaygroundPoint1.Y - 1);
+        private static readonly string by = "Programmering by Hamed Movaghari";
+
         #region Struct Point 2D
 
-        private struct Point2D
+        struct Point2D
         {
             public int X;
             public int Y;
@@ -56,21 +62,27 @@ namespace Snake
                 Snake[3].X = Snake[0].X - 3; Snake[3].Y = Snake[0].Y;
                 Snake[4].X = Snake[0].X - 4; Snake[4].Y = Snake[0].Y;
                 SnakeMainBody(Snake);
-                Console.ResetColor();
+                ConsoleResetColor();
                 do
                 {
-                    Console.SetCursorPosition(45, 20);
-                    Console.Write(" Play new game ? (y or n) ");
+                    //Console.SetCursorPosition(45, 20);
+                    SetTextCenter("Play new game ? (y or n)", PlaygroundPoint1.Y + 13);
                     key = Console.ReadKey(true).Key;
                 } while (key != ConsoleKey.Y && key != ConsoleKey.N);
             } while (key == ConsoleKey.Y);
 
-            /*Snake[0].X = 3;*//*Snake[0].X = 117;*/
-            /*Snake[0].Y = 7;*//*Snake[0].Y = 27;*/
-
             Console.Clear();
         }
 
+        #endregion
+
+        #region Console Reset Colour
+        static void ConsoleResetColor()
+        {
+            //Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+        }
         #endregion
 
         #region Snake game : main body
@@ -83,7 +95,7 @@ namespace Snake
         {
             byte oldDirection = 4; // Block Direction Up:1 Left:2 Down:3 Right:4
             bool isEatFood = false;
-            Border();
+            Border(isClearScreen: true);
             do
             {
                 bool gameOver = false; // Is game over?
@@ -166,14 +178,15 @@ namespace Snake
                             }
                             break;
                     }
-                    if (Snake.Length >= 2414) // ((117-3+1) * (27-7+1)) - 1 = 2414 : Number of Playground points
+                    if (Snake.Length >= maxLenSnake) // Number of Playground points
                     {
+                        //maxLenSnake
                         YouWinASCII(Snake.Length); // ASCII: Game Over
                         gameOver = true; // Is game Over : true
                         break;
                     }
 
-                    if (Snake[0].X < 3 | Snake[0].X > 117 | Snake[0].Y < 7 | Snake[0].Y > 27) // If the snake collision the border
+                    if (Snake[0].X <= PlaygroundPoint1.X || Snake[0].X >= PlaygroundPoint2.X || Snake[0].Y <= PlaygroundPoint1.Y - 1 || Snake[0].Y >= PlaygroundPoint2.Y - 1) // If the snake collision the border
                     {
                         GameOverASCII(Snake.Length); // ASCII: Game Over
                         gameOver = true; // Is game Over : true
@@ -386,23 +399,7 @@ namespace Snake
                 Console.Write(" ");
             }
 
-            Console.BackgroundColor = ConsoleColor.Gray;
-            for (int x = 2; x < 119; x++)
-            {
-                Console.SetCursorPosition(x, 6);
-                Console.Write(" ");
-                Console.SetCursorPosition(x, 28);
-                Console.Write(" ");
-            }
-            for (int y = 6; y < 29; y++)
-            {
-                Console.SetCursorPosition(2, y);
-                Console.Write(" ");
-                Console.SetCursorPosition(118, y);
-                Console.Write(" ");
-            }
-            Console.SetCursorPosition(118, 28);
-            Console.Write(" ");
+            Border(isClearScreen: false);
         }
 
         #endregion
@@ -417,11 +414,11 @@ namespace Snake
         static Point2D MakeFood(Point2D[] snake)
         {
             Random rand = new Random();
-            Point2D result = new Point2D();
+            Point2D result;
             do
             {
-                result.X = rand.Next(3 + 1, 118 - 1);
-                result.Y = rand.Next(7 + 1, 27 - 1);
+                result.X = rand.Next(PlaygroundPoint1.X + 1, PlaygroundPoint2.X);
+                result.Y = rand.Next(PlaygroundPoint1.Y + 1, PlaygroundPoint2.Y - 1);
                 bool @true = true;
                 for (int i = 0; i < snake.Length; i++)
                 {
@@ -444,39 +441,57 @@ namespace Snake
         /// <summary>
         /// Border
         /// </summary>
-        static void Border()
+        static void Border(bool isClearScreen)
         {
-            Console.ResetColor();
-            Console.Clear(); // clear screen of console
-            Console.WriteLine();
-            Console.WriteLine("  █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█");
-            Console.WriteLine("  █                                                  Welcome to Snake!                                                █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                           Programmering by Hamed Movaghari                                        █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █                                                                                                                   █");
-            Console.WriteLine("  █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████");
+            ConsoleResetColor();
+
+            if (isClearScreen)
+            {
+                Console.Clear(); // clear screen of console
+            }
+
+            var welcome = "Welcome to Snake!";
+            SetTextCenter(welcome, yLocation: PlaygroundPoint1.Y - 4);
+            SetTextCenter(by, yLocation: PlaygroundPoint1.Y - 2);
+
+            for (int x = PlaygroundPoint1.X; x <= PlaygroundPoint2.X; x++)
+            {
+                Console.SetCursorPosition(x, 1);
+                Console.WriteLine("▀");
+            }
+
+            for (int y = 1; y <= PlaygroundPoint1.Y; y++)
+            {
+                Console.SetCursorPosition(PlaygroundPoint1.X, y);
+                Console.WriteLine("█");
+
+                Console.SetCursorPosition(PlaygroundPoint2.X, y);
+                Console.WriteLine("█");
+            }
+
+            for (int x = PlaygroundPoint1.X; x <= PlaygroundPoint2.X; x++)
+            {
+                Console.SetCursorPosition(x, PlaygroundPoint1.Y - 1);
+                Console.WriteLine("█");
+
+                Console.SetCursorPosition(x, PlaygroundPoint2.Y - 1);
+                Console.WriteLine("█");
+            }
+
+            for (int y = PlaygroundPoint1.Y; y < PlaygroundPoint2.Y; y++)
+            {
+                Console.SetCursorPosition(PlaygroundPoint1.X, y);
+                Console.WriteLine("█");
+
+                Console.SetCursorPosition(PlaygroundPoint2.X, y);
+                Console.WriteLine("█");
+            }
+        }
+
+        private static void SetTextCenter(string text, int yLocation)
+        {
+            Console.SetCursorPosition(mean - (text.Length / 2), yLocation);
+            Console.Write(text);
         }
 
         #endregion
@@ -488,26 +503,25 @@ namespace Snake
         /// </summary>
         static void LoadingBar()
         {
-            Console.SetCursorPosition(43, 26);
-            Console.WriteLine(" Programmering by Hamed Movaghari");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.SetCursorPosition(11, 19);
-            for (int i = 0; i <= 100; i++)
+            Console.SetCursorPosition(mean - (by.Length / 2), PlaygroundPoint1.Y + 9);
+            Console.Write(by);
+
+            var xFrom = PlaygroundPoint1.X + 2;
+            var xTo = PlaygroundPoint2.X - 3;
+            for (int x = xFrom; x <= xTo; x++)
             {
-                Console.SetCursorPosition(11 + i, 19);
+                Console.SetCursorPosition(x, PlaygroundPoint1.Y + 12);
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.Write(" ");
+                Console.SetCursorPosition(xFrom + 1, PlaygroundPoint1.Y + 12);
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.SetCursorPosition(12, 19);
-                Console.Write($"{i}%");
-                System.Threading.Thread.Sleep(100);
+                Console.Write((((x - xFrom) * 100) / (xTo - xFrom)).ToString("00") + "%");
+                System.Threading.Thread.Sleep(200);
             }
-            Console.SetCursorPosition(47, 22);
-            Console.ResetColor();
-            Console.WriteLine("Press any key to play game");
+            var pressKey = "Press any key to play game";
+            Console.SetCursorPosition(mean - (pressKey.Length / 2), PlaygroundPoint1.Y + 15);
+            ConsoleResetColor();
+            Console.Write(pressKey);
             Console.ReadKey(true);
         }
 
@@ -520,22 +534,19 @@ namespace Snake
         /// </summary>
         static void SnakeASCII()
         {
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("\t\t\t" + @"      ___           ___           ___           ___           ___     ");
-            Console.WriteLine("\t\t\t" + @"     /  /\         /__/\         /  /\         /__/|         /  /\    ");
-            Console.WriteLine("\t\t\t" + @"    /  /:/_        \  \:\       /  /::\       |  |:|        /  /:/_   ");
-            Console.WriteLine("\t\t\t" + @"   /  /:/ /\        \  \:\     /  /:/\:\      |  |:|       /  /:/ /\  ");
-            Console.WriteLine("\t\t\t" + @"  /  /:/ /::\   _____\__\:\   /  /:/~/::\   __|  |:|      /  /:/ /:/_ ");
-            Console.WriteLine("\t\t\t" + @" /__/:/ /:/\:\ /__/::::::::\ /__/:/ /:/\:\ /__/\_|:|____ /__/:/ /:/ /\");
-            Console.WriteLine("\t\t\t" + @" \  \:\/:/~/:/ \  \:\~~\~~\/ \  \:\/:/__\/ \  \:\/:::::/ \  \:\/:/ /:/");
-            Console.WriteLine("\t\t\t" + @"  \  \::/ /:/   \  \:\  ~~~   \  \::/       \  \::/~~~~   \  \::/ /:/ ");
-            Console.WriteLine("\t\t\t" + @"   \__\/ /:/     \  \:\        \  \:\        \  \:\        \  \:\/:/  ");
-            Console.WriteLine("\t\t\t" + @"     /__/:/       \  \:\        \  \:\        \  \:\        \  \::/   ");
-            Console.WriteLine("\t\t\t" + @"     \__\/         \__\/         \__\/         \__\/         \__\/    ");
+            int y = PlaygroundPoint1.Y - 5;
+            Console.ForegroundColor = ConsoleColor.White;
+            SetTextCenter(@"      ___           ___           ___           ___           ___     ", ++y);
+            SetTextCenter(@"     /  /\         /__/\         /  /\         /__/|         /  /\    ", ++y);
+            SetTextCenter(@"    /  /:/_        \  \:\       /  /::\       |  |:|        /  /:/_   ", ++y);
+            SetTextCenter(@"   /  /:/ /\        \  \:\     /  /:/\:\      |  |:|       /  /:/ /\  ", ++y);
+            SetTextCenter(@"  /  /:/ /::\   _____\__\:\   /  /:/~/::\   __|  |:|      /  /:/ /:/_ ", ++y);
+            SetTextCenter(@" /__/:/ /:/\:\ /__/::::::::\ /__/:/ /:/\:\ /__/\_|:|____ /__/:/ /:/ /\", ++y);
+            SetTextCenter(@" \  \:\/:/~/:/ \  \:\~~\~~\/ \  \:\/:/__\/ \  \:\/:::::/ \  \:\/:/ /:/", ++y);
+            SetTextCenter(@"  \  \::/ /:/   \  \:\  ~~~   \  \::/       \  \::/~~~~   \  \::/ /:/ ", ++y);
+            SetTextCenter(@"   \__\/ /:/     \  \:\        \  \:\        \  \:\        \  \:\/:/  ", ++y);
+            SetTextCenter(@"     /__/:/       \  \:\        \  \:\        \  \:\        \  \::/   ", ++y);
+            SetTextCenter(@"     \__\/         \__\/         \__\/         \__\/         \__\/    ", ++y);
         }
 
         #endregion
@@ -547,24 +558,18 @@ namespace Snake
         /// </summary>
         static void YouWinASCII(int Score)
         {
-            Console.ResetColor();
+            ConsoleResetColor();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.SetCursorPosition(35, 10);
-            Console.WriteLine(@" __   __  _______  __   __    _     _  ___   __    _ ");
-            Console.SetCursorPosition(35, 11);
-            Console.WriteLine(@"|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |");
-            Console.SetCursorPosition(35, 12);
-            Console.WriteLine(@"|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |");
-            Console.SetCursorPosition(35, 13);
-            Console.WriteLine(@"|       ||  | |  ||  |_|  |  |       ||   | |       |");
-            Console.SetCursorPosition(35, 14);
-            Console.WriteLine(@"|_     _||  |_|  ||       |  |       ||   | |  _    |");
-            Console.SetCursorPosition(35, 15);
-            Console.WriteLine(@"  |   |  |       ||       |  |   _   ||   | | | |   |");
-            Console.SetCursorPosition(35, 16);
-            Console.WriteLine(@"  |___|  |_______||_______|  |__| |__||___| |_|  |__|");
-            Console.SetCursorPosition(53, 18);
-            Console.WriteLine($"Your score is {Score - 5}");
+            int y = PlaygroundPoint1.Y + 2;
+            SetTextCenter(@" __   __  _______  __   __    _     _  ___   __    _ ", ++y);
+            SetTextCenter(@"|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |", ++y);
+            SetTextCenter(@"|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |", ++y);
+            SetTextCenter(@"|       ||  | |  ||  |_|  |  |       ||   | |       |", ++y);
+            SetTextCenter(@"|_     _||  |_|  ||       |  |       ||   | |  _    |", ++y);
+            SetTextCenter(@"  |   |  |       ||       |  |   _   ||   | | | |   |", ++y);
+            SetTextCenter(@"  |___|  |_______||_______|  |__| |__||___| |_|  |__|", ++y);
+            y += 2;
+            SetTextCenter($"Your score is {Score - 5}", y);
         }
 
         #endregion
@@ -576,24 +581,18 @@ namespace Snake
         /// </summary>
         static void GameOverASCII(int Score)
         {
-            Console.ResetColor();
+            ConsoleResetColor();
+            int y = PlaygroundPoint1.Y + 2;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(23, 10);
-            Console.WriteLine(@" _______  _______  __   __  _______    _______  __   __  _______  ______   ");
-            Console.SetCursorPosition(23, 11);
-            Console.WriteLine(@"|       ||   _   ||  |_|  ||       |  |       ||  | |  ||       ||    _ |  ");
-            Console.SetCursorPosition(23, 12);
-            Console.WriteLine(@"|    ___||  |_|  ||       ||    ___|  |   _   ||  |_|  ||    ___||   | ||  ");
-            Console.SetCursorPosition(23, 13);
-            Console.WriteLine(@"|   | __ |       ||       ||   |___   |  | |  ||       ||   |___ |   |_||_ ");
-            Console.SetCursorPosition(23, 14);
-            Console.WriteLine(@"|   ||  ||       ||       ||    ___|  |  |_|  ||       ||    ___||    __  |");
-            Console.SetCursorPosition(23, 15);
-            Console.WriteLine(@"|   |_| ||   _   || ||_|| ||   |___   |       | |     | |   |___ |   |  | |");
-            Console.SetCursorPosition(23, 16);
-            Console.WriteLine(@"|_______||__| |__||_|   |_||_______|  |_______|  |___|  |_______||___|  |_|");
-            Console.SetCursorPosition(53, 18);
-            Console.WriteLine($"Your score is {Score - 5}");
+            SetTextCenter(@"  ______  _______  __   __  ______    _______  __   __  ______  ______   ", ++y);
+            SetTextCenter(@" |      ||   _   ||  |_|  ||      |  |       ||  | |  ||      ||    _ |  ", ++y);
+            SetTextCenter(@" |   ___||  |_|  ||       ||   ___|  |   _   ||  |_|  ||   ___||   | ||  ", ++y);
+            SetTextCenter(@" |  | __ |       ||       ||  |___   |  | |  ||       ||  |___ |   |_||_ ", ++y);
+            SetTextCenter(@" |  ||  ||       ||       ||   ___|  |  |_|  ||       ||   ___||    __  |", ++y);
+            SetTextCenter(@" |  |_| ||   _   || ||_|| ||  |___   |       | |     | |  |___ |   |  | |", ++y);
+            SetTextCenter(@" |______||__| |__||_|   |_||______|  |_______|  |___|  |______||___|  |_|", ++y);
+            y += 2;
+            SetTextCenter($"Your score is {Score - 5}", y);
         }
 
         #endregion
@@ -607,11 +606,12 @@ namespace Snake
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.WindowHeight = 30; // Change Window Height
-                Console.WindowWidth = 120; // Change Window Width
+                Console.WindowHeight = PlaygroundPoint2.Y + 1; //30; // Change Window Height
+                Console.WindowWidth = PlaygroundPoint2.X + 1; //120; // Change Window Width
                 //Console.BufferHeight = 30; //9001//30// Change Buffer Height
                 Console.BufferWidth = 120; // Change Buffer Width
                 Console.CursorSize = 25; // Change Cursor Size
+
                 /* Disable Resize Windows */
                 IntPtr handle = GetConsoleWindow();
                 IntPtr sysMenu = GetSystemMenu(handle, false);
@@ -625,6 +625,7 @@ namespace Snake
                 }
                 /* Disable Resize Windows */
             }
+
             Console.BackgroundColor = ConsoleColor.Black; // Change Background Color
             Console.ForegroundColor = ConsoleColor.Gray; // Change Foreground Color
             Console.Title = "Snake"; // Change Title
@@ -634,3 +635,4 @@ namespace Snake
         #endregion
     }
 }
+
