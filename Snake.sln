@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{A52C67E3
 		Files\Snake.ico = Files\Snake.ico
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake.Desktop", "Snake.Desktop\Snake.Desktop.csproj", "{7E4D81CC-5A4E-414C-90A1-5B54E9FC273C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{74F82CFF-5D8F-464B-8A87-EBC3E01F1445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74F82CFF-5D8F-464B-8A87-EBC3E01F1445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F82CFF-5D8F-464B-8A87-EBC3E01F1445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4D81CC-5A4E-414C-90A1-5B54E9FC273C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4D81CC-5A4E-414C-90A1-5B54E9FC273C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4D81CC-5A4E-414C-90A1-5B54E9FC273C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4D81CC-5A4E-414C-90A1-5B54E9FC273C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
