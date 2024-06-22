@@ -1,3 +1,3 @@
 # Snake
 
-Snake game with arrow keys
+Cross-platform snake game with arrow keys
