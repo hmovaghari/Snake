@@ -47,6 +47,7 @@ namespace Snake
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            //Test
             Console.Clear();
             ConsoleProperties(); // Properties of console window size, background and foreground color, title, Cursor Size, Cursor Visible, Disable Resize and MAXIMIZE Window
             SnakeASCII(); // ASCII: Snake
